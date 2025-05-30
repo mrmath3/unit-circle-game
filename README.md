@@ -2,6 +2,8 @@
 
 This interactive game helps students master the locations of angles on the unit circle using radians. Players are shown a radian value (e.g., \( \frac{\pi}{6} \)) and must click the corresponding point on a custom SVG unit circle. Great for high school math classrooms!
 
+## 🎮 [Play Here](https://mrmath3.github.io/unit-circle-game/)
+
 ## 🔥 Features
 
 - Clean, responsive SVG-based unit circle
@@ -23,10 +25,15 @@ This interactive game helps students master the locations of angles on the unit 
 
 ## 📦 File Structure
 Unit-Circle-Game/
+
 ├── index.html # Main game logic and UI
+
 ├── correct-ding.mp3 # Sound for correct answer
+
 ├── wrong-buzz.mp3 # Sound for incorrect answer
+
 ├── Unit Circle.svg # Custom SVG graphic
+
 └── README.md # You’re reading it!
 
 ## 🌐 Hosting
