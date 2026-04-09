@@ -171,7 +171,7 @@
 
       currentAngle = newAngle;
       promptDiv.innerHTML = `Click on \\(${currentAngle}\\)`;
-      MathJax.typeset();
+      MathJax.typesetPromise([promptDiv]).catch(err => console.log(err));
     }
 
 
@@ -300,19 +300,18 @@
               feedback.innerHTML = `✅ You correctly clicked on \\(${currentAngle}\\)`;
             }
             ding.play();
-            MathJax.typeset();
-            newPrompt();
+            MathJax.typesetPromise([feedback]).then(() => newPrompt()).catch(err => console.log(err));
           } else {
             feedback.innerHTML = `❌ Incorrect. You clicked \\(${clickedAngle}\\) instead of \\(${currentAngle}\\)`;
             buzz.play();
-            MathJax.typeset();
+            MathJax.typesetPromise([feedback]).catch(err => console.log(err));
           }
         });
         svg.appendChild(circle);
       }
       newPrompt();
       loadScores();
-      MathJax.typeset(); 
+      MathJax.typesetPromise([promptDiv]).catch(err => console.log(err)); 
     });
   </script>
 </body>
