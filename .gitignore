@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Vite build output
+dist/
+
+# Local env files (never commit real API keys)
+.env
+.env.local
+.env.production
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+*.swp
