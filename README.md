@@ -4,7 +4,7 @@ An interactive game that helps students master the locations of angles on the un
 
 ## Play
 
-**[Play on mrsindelmath.com](https://mrsindelmath.com)**
+**[Play on mrsindelmath.com](https://www.mrsindelmath.com/games/unit-circle)**
 
 ## Features
 
