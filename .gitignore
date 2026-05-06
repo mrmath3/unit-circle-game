@@ -9,6 +9,11 @@ dist/
 .env.local
 .env.production
 
+# API subfolder secrets and build artifacts
+api/.dev.vars
+api/node_modules/
+api/.wrangler/
+
 # macOS
 .DS_Store
 

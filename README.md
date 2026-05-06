@@ -1,59 +1,88 @@
-# 🧮 Unit Circle Click Game
+# Unit Circle Click Game
 
-This interactive game helps students master the locations of angles on the unit circle using radians. Players are shown a radian value (e.g., \( \frac{\pi}{6} \)) and must click the corresponding point on a custom SVG unit circle. Great for high school math classrooms!
+An interactive game that helps students master the locations of angles on the unit circle using radians. Players are shown a radian value (e.g., π/6) and must click the corresponding point on a custom SVG unit circle.
 
-## 🎮 [Play Here](https://mrmath3.github.io/unit-circle-game/)
+## Play
 
-## 🔥 Features
+**[Play on mrsindelmath.com](https://mrsindelmath.com)**
+
+## Features
 
 - Clean, responsive SVG-based unit circle
 - MathJax-rendered angle prompts
-- Instant feedback for correct or incorrect answers
-- Optional alternate angles like \( 13\pi/6 \) and \( -\pi/6 \)
+- Instant feedback with sound effects
+- Optional alternate angles (e.g., 13π/6, −π/6)
 - 30-second challenge mode with countdown timer
-- Local high score leaderboard with percentage accuracy
-- Sound effects for correct and incorrect answers
-- Fully offline and self-contained (no server required)
+- Public leaderboard (requires Google sign-in)
 
-## 🎮 How to Play
+## How to Play
 
-1. Click the correct angle when prompted.
+1. Click the correct angle location when prompted.
 2. A 30-second timer starts on your first click.
-3. Try to answer as many correctly as you can before time runs out.
-4. Enter your name to save your score to the local leaderboard.
-5. Use the checkbox to enable alternate angles for an added challenge.
+3. Sign in with Google to submit your score to the public leaderboard.
+4. Use the checkbox to enable alternate angles for an added challenge.
 
-## 📦 File Structure
-Unit-Circle-Game/
+## For Teachers
 
-├── index.html # Main game logic and UI
+Want to use or adapt this game for your own classroom? Fork this repository and follow the setup steps below.
 
-├── correct-ding.mp3 # Sound for correct answer
+### Prerequisites
 
-├── wrong-buzz.mp3 # Sound for incorrect answer
+- [Node.js](https://nodejs.org/) (v18+)
+- A [Firebase](https://firebase.google.com/) project (for Google sign-in and score storage)
 
-├── Unit Circle.svg # Custom SVG graphic
+### Local Development
 
-└── README.md # You’re reading it!
+```bash
+# Install dependencies
+npm install
 
-## 🌐 Hosting
+# Start the dev server (runs at http://localhost:5173)
+npm run dev
+```
 
-This game can be hosted on [GitHub Pages](https://pages.github.com/) and embedded into Google Sites or other platforms.
+Create a `.env.local` file with your Firebase project config:
 
-## 🧠 For Teachers
+```
+VITE_FIREBASE_API_KEY=your_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_APP_ID=your_app_id
+VITE_API_BASE_URL=http://localhost:3000/api/games/unit-circle
+```
 
-This game is designed with high school students in mind — it works especially well in small class settings where engagement and repetition are key to mastering angle locations.
+### Backend (Leaderboard API)
 
-## ✅ TODO (Future Features)
+The leaderboard is powered by a Next.js API route on the main site. If you want a standalone backend instead, see the `api/` folder — it contains a Cloudflare Worker implementation that can be deployed independently with a Cloudflare D1 database.
 
-- Toggleable difficulty levels
-- Support for degrees and custom question sets
-- Exportable high scores
-- Classroom mode (group play or team challenges)
+### Deploying the Frontend
+
+```bash
+npm run build      # build to dist/
+npm run deploy     # deploy to GitHub Pages (requires gh-pages package)
+```
+
+## Project Structure
+
+```
+unit-circle-game/
+├── src/
+│   ├── main.js         # entry point, wires up game + auth
+│   ├── game.js         # core game logic
+│   ├── angles.js       # unit circle angle definitions
+│   ├── auth.js         # Firebase Google sign-in
+│   ├── api.js          # leaderboard API client
+│   └── style.css
+├── api/                # standalone Cloudflare Worker backend (optional)
+│   ├── src/index.js    # Worker route handlers
+│   ├── schema/         # D1 database schema
+│   └── wrangler.toml   # Cloudflare deployment config
+├── index.html
+├── unit-circle.svg
+├── correct-ding.mp3
+└── wrong-buzz.mp3
+```
 
 ---
 
-## 👨‍🏫 Built By
-
-Andrew Sindel  
-High School Math Teacher – Lee Vining High School, CA
+Built by Andrew Sindel — High School Math Teacher, Lee Vining High School, CA

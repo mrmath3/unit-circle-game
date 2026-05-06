@@ -1,0 +1,24 @@
+name       = "unit-circle-api"
+main       = "src/index.js"
+# Cloudflare compatibility date — keep this up to date
+compatibility_date = "2024-04-05"
+
+# ── D1 Database binding ────────────────────────────────────────────────────────
+# After `wrangler d1 create unit-circle-db`, paste the generated database_id below.
+[[d1_databases]]
+binding      = "DB"                  # accessed as env.DB inside the Worker
+database_name = "unit-circle-db"
+database_id   = "REPLACE_WITH_D1_DATABASE_ID"
+
+# ── Secrets (set via CLI, not in this file) ────────────────────────────────────
+# Run once:
+#   npx wrangler secret put GOOGLE_CLIENT_ID
+#   npx wrangler secret put ADMIN_SECRET
+#
+# For local dev, create a .dev.vars file (gitignored) with:
+#   GOOGLE_CLIENT_ID=your_google_client_id.apps.googleusercontent.com
+#   ADMIN_SECRET=any_random_string_you_choose
+
+# ── CORS origin whitelist (edit as needed) ────────────────────────────────────
+[vars]
+ALLOWED_ORIGINS = "http://localhost:5173,https://mrmath3.github.io"
